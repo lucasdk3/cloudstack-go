@@ -78,8 +78,7 @@ func (p *CreateAccountParams) toURLValues() url.Values {
 		u.Set("accountid", v.(string))
 	}
 	if v, found := p.p["accounttype"]; found {
-		vv := strconv.Itoa(v.(int))
-		u.Set("accounttype", vv)
+		u.Set("accounttype", v.(string))
 	}
 	if v, found := p.p["domainid"]; found {
 		u.Set("domainid", v.(string))
@@ -177,7 +176,7 @@ func (p *CreateAccountParams) GetAccountid() (string, bool) {
 	return value, ok
 }
 
-func (p *CreateAccountParams) SetAccounttype(v int) {
+func (p *CreateAccountParams) SetAccounttype(v string) {
 	if p.p == nil {
 		p.p = make(map[string]interface{})
 	}
@@ -190,11 +189,11 @@ func (p *CreateAccountParams) ResetAccounttype() {
 	}
 }
 
-func (p *CreateAccountParams) GetAccounttype() (int, bool) {
+func (p *CreateAccountParams) GetAccounttype() (string, bool) {
 	if p.p == nil {
 		p.p = make(map[string]interface{})
 	}
-	value, ok := p.p["accounttype"].(int)
+	value, ok := p.p["accounttype"].(string)
 	return value, ok
 }
 
@@ -442,7 +441,7 @@ func (s *AccountService) CreateAccount(p *CreateAccountParams) (*CreateAccountRe
 
 type CreateAccountResponse struct {
 	Accountdetails            map[string]string           `json:"accountdetails"`
-	Accounttype               int                         `json:"accounttype"`
+	Accounttype               string                      `json:"accounttype"`
 	Apikeyaccess              string                      `json:"apikeyaccess"`
 	Backupavailable           string                      `json:"backupavailable"`
 	Backuplimit               string                      `json:"backuplimit"`
@@ -524,7 +523,7 @@ type CreateAccountResponse struct {
 type CreateAccountResponseUser struct {
 	Account             string      `json:"account"`
 	Accountid           string      `json:"accountid"`
-	Accounttype         int         `json:"accounttype"`
+	Accounttype         string      `json:"accounttype"`
 	Apikey              string      `json:"apikey"`
 	Apikeyaccess        string      `json:"apikeyaccess"`
 	Created             string      `json:"created"`
@@ -786,7 +785,7 @@ func (s *AccountService) DisableAccount(p *DisableAccountParams) (*DisableAccoun
 
 type DisableAccountResponse struct {
 	Accountdetails            map[string]string            `json:"accountdetails"`
-	Accounttype               int                          `json:"accounttype"`
+	Accounttype               string                       `json:"accounttype"`
 	Apikeyaccess              string                       `json:"apikeyaccess"`
 	Backupavailable           string                       `json:"backupavailable"`
 	Backuplimit               string                       `json:"backuplimit"`
@@ -868,7 +867,7 @@ type DisableAccountResponse struct {
 type DisableAccountResponseUser struct {
 	Account             string      `json:"account"`
 	Accountid           string      `json:"accountid"`
-	Accounttype         int         `json:"accounttype"`
+	Accounttype         string      `json:"accounttype"`
 	Apikey              string      `json:"apikey"`
 	Apikeyaccess        string      `json:"apikeyaccess"`
 	Created             string      `json:"created"`
@@ -1002,7 +1001,7 @@ func (s *AccountService) EnableAccount(p *EnableAccountParams) (*EnableAccountRe
 
 type EnableAccountResponse struct {
 	Accountdetails            map[string]string           `json:"accountdetails"`
-	Accounttype               int                         `json:"accounttype"`
+	Accounttype               string                      `json:"accounttype"`
 	Apikeyaccess              string                      `json:"apikeyaccess"`
 	Backupavailable           string                      `json:"backupavailable"`
 	Backuplimit               string                      `json:"backuplimit"`
@@ -1084,7 +1083,7 @@ type EnableAccountResponse struct {
 type EnableAccountResponseUser struct {
 	Account             string      `json:"account"`
 	Accountid           string      `json:"accountid"`
-	Accounttype         int         `json:"accounttype"`
+	Accounttype         string      `json:"accounttype"`
 	Apikey              string      `json:"apikey"`
 	Apikeyaccess        string      `json:"apikeyaccess"`
 	Created             string      `json:"created"`
@@ -1188,8 +1187,7 @@ func (p *LinkAccountToLdapParams) toURLValues() url.Values {
 		u.Set("account", v.(string))
 	}
 	if v, found := p.p["accounttype"]; found {
-		vv := strconv.Itoa(v.(int))
-		u.Set("accounttype", vv)
+		u.Set("accounttype", v.(string))
 	}
 	if v, found := p.p["admin"]; found {
 		u.Set("admin", v.(string))
@@ -1230,7 +1228,7 @@ func (p *LinkAccountToLdapParams) GetAccount() (string, bool) {
 	return value, ok
 }
 
-func (p *LinkAccountToLdapParams) SetAccounttype(v int) {
+func (p *LinkAccountToLdapParams) SetAccounttype(v string) {
 	if p.p == nil {
 		p.p = make(map[string]interface{})
 	}
@@ -1243,11 +1241,11 @@ func (p *LinkAccountToLdapParams) ResetAccounttype() {
 	}
 }
 
-func (p *LinkAccountToLdapParams) GetAccounttype() (int, bool) {
+func (p *LinkAccountToLdapParams) GetAccounttype() (string, bool) {
 	if p.p == nil {
 		p.p = make(map[string]interface{})
 	}
-	value, ok := p.p["accounttype"].(int)
+	value, ok := p.p["accounttype"].(string)
 	return value, ok
 }
 
@@ -1384,7 +1382,7 @@ func (s *AccountService) LinkAccountToLdap(p *LinkAccountToLdapParams) (*LinkAcc
 
 type LinkAccountToLdapResponse struct {
 	Accountid   string `json:"accountid"`
-	Accounttype int    `json:"accounttype"`
+	Accounttype string `json:"accounttype"`
 	Domainid    string `json:"domainid"`
 	JobID       string `json:"jobid"`
 	Jobstatus   int    `json:"jobstatus"`
@@ -1403,8 +1401,7 @@ func (p *ListAccountsParams) toURLValues() url.Values {
 		return u
 	}
 	if v, found := p.p["accounttype"]; found {
-		vv := strconv.Itoa(v.(int))
-		u.Set("accounttype", vv)
+		u.Set("accounttype", v.(string))
 	}
 	if v, found := p.p["apikeyaccess"]; found {
 		u.Set("apikeyaccess", v.(string))
@@ -1458,7 +1455,7 @@ func (p *ListAccountsParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *ListAccountsParams) SetAccounttype(v int) {
+func (p *ListAccountsParams) SetAccounttype(v string) {
 	if p.p == nil {
 		p.p = make(map[string]interface{})
 	}
@@ -1471,11 +1468,11 @@ func (p *ListAccountsParams) ResetAccounttype() {
 	}
 }
 
-func (p *ListAccountsParams) GetAccounttype() (int, bool) {
+func (p *ListAccountsParams) GetAccounttype() (string, bool) {
 	if p.p == nil {
 		p.p = make(map[string]interface{})
 	}
-	value, ok := p.p["accounttype"].(int)
+	value, ok := p.p["accounttype"].(string)
 	return value, ok
 }
 
@@ -1886,7 +1883,7 @@ type ListAccountsResponse struct {
 
 type Account struct {
 	Accountdetails            map[string]string `json:"accountdetails"`
-	Accounttype               int               `json:"accounttype"`
+	Accounttype               string            `json:"accounttype"`
 	Apikeyaccess              string            `json:"apikeyaccess"`
 	Backupavailable           string            `json:"backupavailable"`
 	Backuplimit               string            `json:"backuplimit"`
@@ -1968,7 +1965,7 @@ type Account struct {
 type AccountUser struct {
 	Account             string      `json:"account"`
 	Accountid           string      `json:"accountid"`
-	Accounttype         int         `json:"accounttype"`
+	Accounttype         string      `json:"accounttype"`
 	Apikey              string      `json:"apikey"`
 	Apikeyaccess        string      `json:"apikeyaccess"`
 	Created             string      `json:"created"`
@@ -2433,7 +2430,7 @@ func (s *AccountService) LockAccount(p *LockAccountParams) (*LockAccountResponse
 
 type LockAccountResponse struct {
 	Accountdetails            map[string]string         `json:"accountdetails"`
-	Accounttype               int                       `json:"accounttype"`
+	Accounttype               string                    `json:"accounttype"`
 	Apikeyaccess              string                    `json:"apikeyaccess"`
 	Backupavailable           string                    `json:"backupavailable"`
 	Backuplimit               string                    `json:"backuplimit"`
@@ -2515,7 +2512,7 @@ type LockAccountResponse struct {
 type LockAccountResponseUser struct {
 	Account             string      `json:"account"`
 	Accountid           string      `json:"accountid"`
-	Accounttype         int         `json:"accounttype"`
+	Accounttype         string      `json:"accounttype"`
 	Apikey              string      `json:"apikey"`
 	Apikeyaccess        string      `json:"apikeyaccess"`
 	Created             string      `json:"created"`
@@ -2672,7 +2669,7 @@ func (s *AccountService) MarkDefaultZoneForAccount(p *MarkDefaultZoneForAccountP
 
 type MarkDefaultZoneForAccountResponse struct {
 	Accountdetails            map[string]string                       `json:"accountdetails"`
-	Accounttype               int                                     `json:"accounttype"`
+	Accounttype               string                                  `json:"accounttype"`
 	Apikeyaccess              string                                  `json:"apikeyaccess"`
 	Backupavailable           string                                  `json:"backupavailable"`
 	Backuplimit               string                                  `json:"backuplimit"`
@@ -2754,7 +2751,7 @@ type MarkDefaultZoneForAccountResponse struct {
 type MarkDefaultZoneForAccountResponseUser struct {
 	Account             string      `json:"account"`
 	Accountid           string      `json:"accountid"`
-	Accounttype         int         `json:"accounttype"`
+	Accounttype         string      `json:"accounttype"`
 	Apikey              string      `json:"apikey"`
 	Apikeyaccess        string      `json:"apikeyaccess"`
 	Created             string      `json:"created"`
@@ -3011,7 +3008,7 @@ func (s *AccountService) UpdateAccount(p *UpdateAccountParams) (*UpdateAccountRe
 
 type UpdateAccountResponse struct {
 	Accountdetails            map[string]string           `json:"accountdetails"`
-	Accounttype               int                         `json:"accounttype"`
+	Accounttype               string                      `json:"accounttype"`
 	Apikeyaccess              string                      `json:"apikeyaccess"`
 	Backupavailable           string                      `json:"backupavailable"`
 	Backuplimit               string                      `json:"backuplimit"`
@@ -3093,7 +3090,7 @@ type UpdateAccountResponse struct {
 type UpdateAccountResponseUser struct {
 	Account             string      `json:"account"`
 	Accountid           string      `json:"accountid"`
-	Accounttype         int         `json:"accounttype"`
+	Accounttype         string      `json:"accounttype"`
 	Apikey              string      `json:"apikey"`
 	Apikeyaccess        string      `json:"apikeyaccess"`
 	Created             string      `json:"created"`
